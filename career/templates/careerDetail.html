@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  
+
+<div class="container">
+    <a class="btn btn-block btn-outline-dark mb-5" href="{% url 'addCareer' %}">+Add Job/Intership Post</a>
+  
+    <div class="card">
+      {% if flag %}
+      <h1 class="card-header">{{post.postType}}  <span style="font-size: small;">{{post.datePosted}}</span> <span  style="float: right;"> 
+        <a href="{% url 'updateCareer' post.id %}" class="btn btn-outline-success  btn-sm">Update</a>
+        <a href="{% url 'deleteCareer' post.id %}" class="btn btn-outline-danger btn-sm">Delete</a></span></h1>
+
+      {% else %}
+      
+      <h1 class="card-header">{{post.postType}} by {{post.author}}  <span  style="margin-top:20px;float: right;font-size:small">{{post.datePosted}}</span></h1>
+
+      {% endif %}  
+
+        <div class="card-body">
+          <h2 class="card-title">{{post.title}}</h2>
+        
+          <div class="row">
+          <div class="col-md-6">
+          <p class="card-text">{{post.description}}</div>
+        <div class="col-md-6">
+          
+         {% if post.image  %}
+
+         <a href="{{post.image.url}}" target="_target">
+         <img src="{{post.image.url}}" height="500" width="500" style="float:right" class="img-fluid">
+        </a>
+        {% else %}
+         {% endif %}
+        </div>             
+    </div>
+                  
+        </div>
+      
+   
+        
+      </div>
+    </div>  
+  
+
+
+    <style>
+
+    </style>
+    
+{% endblock content %}

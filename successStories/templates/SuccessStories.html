@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="container">
+      <div class="container">
+        <div class="container">
+          {% for message in messages %}
+          <p class="alert alert-success">{{message}}</p>
+        {% endfor %}
+          <a class="btn btn-block btn-outline-dark mb-5" href="{% url 'addSuccessStories' %}">+Add Success Stories</a>
+          {% for post in posts %}
+          <div class="col-md-10 offset-md-1">
+          <div class="card mb-5 justify-content-center col-md-12 col-sm-12" style="width: 50rem;">
+            <div class="card-body body-change  justify-content-center img-fluid ">
+              <h5 class="card-title">
+                  <span class="title_no">{{post.id}} </span> {{post.author.email}}
+                  <a class="link" href="#">@{{post.author.username}}</a> 
+                      <div class="float-right" style="font-size:small">
+                         <span >
+                            Date Posted:
+                          </span>
+                          <span class="ml-2 float-right " style="color:rgb(156, 156, 156);">
+                            {{post.datePosted}}</span>
+                      </div>
+
+                    </h5>
+                      <img width="250" height="250" class="ml-2 rounded   float-right" src="{{post.image.url}}" alt="Card image cap">
+                         <p class="card-text">{{post.description|safe|slice:":800"}}</p>
+                      [<a href="{% url 'SuccessStoriesDisplayDetail' post.id %}" class="link">Go somewhere</a>]
+                      <hr>
+                      <div class="well" style="text-align: center;">
+                          <q style="color:rgb(156, 156, 156)" >
+                            {{post.qoute}}
+                      </q>
+                    
+                    </div>
+               </div>
+          </div> 
+        </div>
+          
+          {% endfor %}
+          
+
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

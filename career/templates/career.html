@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container ">
+  {% for message in messages %}
+    <p class="alert alert-success">{{message}}</p>
+  {% endfor %}
+    <a class="btn btn-block btn-outline-dark mb-5" href="{% url 'addCareer' %}">+Add Job/Intership Post</a>
+    {% for post in posts  %}
+    <div class="card mb-5">
+        <h1 class="card-header">{{post.postType}}<span  style="margin-top:20px;float: right;font-size:small">{{post.datePosted}}</span></h1>
+        <div class="card-body">
+          <h2 class="card-title">{{post.title}}</h2>
+          <p class="card-text">{{post.description|slice:":255"}}</p>
+          
+    
+          <a href="{% url 'careerDisplayDetail' post.id %}"  class="btn btn-primary">Watch Details</a> 
+              
+        </div>
+      </div>
+    {% endfor %}
+  </div>  
+    
+{% endblock content %}

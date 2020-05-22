@@ -1,0 +1,351 @@
+{%  load  static  %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+    <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+    <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <title>Home</title>
+  </head>
+  <style>
+    .ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    
+    .li {
+      float: left;
+    }
+    
+    .li a {
+      display: block;
+      padding: 8px;
+   
+    }
+  
+      .first-logo-img{
+            width: 22px;
+            position: relative;
+            bottom: 10px;
+            
+           
+      }
+      .first-logo-img1{
+       
+        margin-left: 40px;    
+  }
+  .second-logo-img{
+      margin-left:60px ;
+      width: 100px;
+      height: 90px;
+  }
+  .footer{
+      width: 100%;
+      background-color: black;
+      height: 400px;
+  }
+  .web-address-link:hover{
+   color: white;
+  }
+/* Sticky Footer Classes */
+
+
+
+/*actual nav bar*/
+.nav2{
+  margin-top: 0px;
+}
+.ul2{
+  margin-left: 100px;
+}
+.ul2 li a{
+   color: black;
+   margin-left: 20px;
+   text-decoration: none;
+}
+
+.ul2 li a:hover{
+  background-color: black;
+  color: white;
+  font-size: 18px;
+  transition: 0.2s;
+  border-radius: 2px;
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  
+  padding-bottom: 20px;
+}
+.li3{
+  float: right;
+  
+
+}
+
+
+
+@media screen and (max-width: 900px) {
+ 
+  .ul2 li a:hover{
+    
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    color: black;
+    background-color: white;
+    padding-bottom: 0;
+
+   } 
+
+
+
+  }
+  
+    
+</style>
+  <body>
+
+
+    <!--login urls-->
+
+  
+
+    
+  <div  class=" alert alert-dismissible fade show" role="alert" style=" width:100%;background-color: rgb(187, 189, 187); height:40px" >    
+    <div class="row">
+        <div class="col-md-6  col-xs-6 col-sm-2 col-xs-2 ">
+            <ul class="ul inline-list left">
+                <li class="li"><a href=""><img class="first-logo-img first-logo-img1" src="{% static 'images/icons//fb.png' %}" alt=""></a></li>
+                <li class="li"><a href=""><img class="first-logo-img" src="{% static 'images/icons//linkedin.png' %}" alt=""  ></a></li>
+                <li class="li"><a href=""><img class="first-logo-img" src="{% static 'images/icons//twitter.png' %}" alt=""></a></li>
+                <li class="li"><a href=""><img class="first-logo-img" src="{% static 'images/icons//googleplus.png' %}" alt=""></a></li>   
+            </ul>
+        </div>
+        <div class="col-md-6 col-xs-6">
+            <ul class="ul inline-list" style="float:right;  position: relative; bottom: 10px;">
+              {% if not user.is_authenticated %}  
+              <li class="nav-item li "><a class="nav-link" style="color:cornsilk" href="{% url 'login' %}">Login</a></li>
+                <li class="nav-item li"><a class="nav-link" style="color:cornsilk" href="{% url 'register' %}">Sign Up</a></li>
+              </ul>
+              {% else %}
+              <li class="nav-item li"><a class="nav-link" style="color:cornsilk" href="{% url 'logout' %}">Logout</a></li>
+
+                {% endif %}
+
+        </div>
+    </div>   
+    <button type="button" class="close" style="margin-top: 7px; color:white" data-dismiss="alert" aria-label="Close">
+        <span class="color:white" style="position: relative; bottom: 10px;" aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    
+<!--=========================================================================================-->
+<!--=========================================================================================-->
+<!--=========================================================================================-->
+<!--==================nav2 shadow-sm p-3 mb-5 bg-white rounded =======================================================================-->
+<!--=========================================================================================-->
+
+        <!--Actual Navbar-->
+        <nav class="navbar shadow p-3 mb-5 bg-white rounded navbar-expand-lg sticky-top  navbar-light " style="background-color: white;">
+         
+          <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'images/icons/logo4.png' %}"width="100" height="80" alt="">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarText">
+            <ul class="ul2 navbar-nav mr-auto col-md-12 col-sm-12 col-lg-12 text-center  ">
+              
+              
+              {% if user.is_authenticated %}
+                
+              <li class="li2 "><a  href="{% url 'home' %}">Home</a></li>
+              <li class="li2 "><a  href="{% url 'careerDisplay' %}">Career</a></li>
+              <li class="li2 "><a  href="{% url 'SuccessStoriesDisplay' %}">Success Stories</a></li>
+              <li class="li2 "><a  href="{% url 'TechTrendDisplay' %}">Tech Trend</a></li>
+              <li class="li2 "><a  href="">Chat</a></li>
+              <li class="li2 "><a  href="">Search Alumani</a></li>
+              <li class="li2 "><a  href="">Gallery</a></li>
+              <li class="li2 "><a  href="">Events</a></li>
+              <li class="li2 "><a  href="">News</a></li>
+              <li class="li2 "><a  href="/contact">Contact</a></li>
+              <li class="li2 "><a  href="/about">About Us</a></li>
+              {% else %}
+              <li class="li2 "><a  href="{% url 'home' %}">home</a></li>
+              <li class="li2 "><a  href="/contact">Contact</a></li>
+              <li class="li3 "><a  href="/about">About Us</a></li>
+
+              {% endif %}
+
+            </ul>
+            
+            <span class="navbar-text">
+              
+            </span>
+          </div>
+        </nav>
+      
+    {% block content %}
+      
+    {% endblock content %}
+  
+
+
+    <!--========================================================================================-->
+    <!--========================================================================================-->
+    <!--========================================================================================-->
+    <!--========================================================================================-->
+    <!--========================================================================================-->
+    
+    <!--footer-->
+
+    <!-- Footer -->
+<footer class="page-footer font-small    pt-4" style="background-color: black; color:white;margin-top:250px">
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-4 mt-md-0 mt-3" style="border-right: 2px solid white;">
+
+        <!-- Content -->
+        <h3 class="text text-light">
+          Qoute of the day
+      </h3> 
+      <br>
+    <p><blockquote> <i class="text text-light">
+       "" A university is just a group of buildings gathered around a library.""
+    </i>
+    </p></blockquote>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-4 mb-md-0 mb-3" style="border-right: 2px solid white;">
+        <h3 style="color: white;">Contacts</h3><br>
+        <dl class="" style="color: white;">
+            <h5 >Address</h5>
+       <p style="color: white;"> PMAS-Arid Agriculture University Rawalpindi, 
+          Shamsabad, Muree Road Rawalpindi - Pakistan. </p>
+        </dl>
+        <dl class="" style="color: white;">
+          <dt>Web Address:</dt>
+          <dd><a href="" class="web-address-link">www.uaar.edu.pk</a></dd>
+        </dl>
+        <dl class="contact-list" style="color: white;">
+          <dt>Phone:</dt>
+           <p style="color: white;">+92-051-9292122</p>
+          </dd>
+        </dl>
+       
+        
+ 
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-4 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h3 >Quick Links</h3>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">Home </a>
+          </li>
+          <li>
+            <a href="#!">Success Stories </a>
+          </li>
+          <li>
+            <a href="#!">Tech Trend </a>
+          </li>
+          <li>
+            <a href="#!">Chat </a>
+          </li>
+          <li>
+            <a href="#!">Search Alumani </a>
+          </li>
+          <li>
+            <a href="#!">Gallery </a>
+          </li>
+          <li>
+            <a href="#!">Events </a>
+          </li>
+          <li>
+            <a href="#!">News </a>
+          </li>
+          <li>
+            <a href="#!">Contact </a>
+          </li>
+          <li>
+            <a href="#!">About Us</a>
+          </li>
+          <li>
+            <a href="#!">Gallery</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://www.uaar.edu.pk/"> uaar.edu.pk</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+        
+   
+
+  
+    <!--bootstrap jquery files-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

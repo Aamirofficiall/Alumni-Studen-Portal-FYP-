@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<style>
+  blockquote{
+    border-left:none
+}
+
+.quote-badge{
+    background-color: rgba(0, 0, 0, 0.2);   
+}
+
+.quote-box{
+    
+    overflow: hidden;
+    margin-top: -50px;
+    padding-top: -100px;
+    border-radius: 17px;
+    background-color: #4ADFCC;
+    margin-top: 25px;
+    color:white;
+    width: 325px;
+    box-shadow: 2px 2px 2px 2px #E0E0E0;
+    
+}
+
+.quotation-mark{
+    
+    margin-top: -10px;
+    font-weight: bold;
+    font-size:100px;
+    color:white;
+    font-family: "Times New Roman", Georgia, Serif;
+    
+}
+
+.quote-text{
+    
+    font-size: 19px;
+    margin-top: -65px;
+}
+</style>
+
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+
+<div class="container">
+    <a class="btn btn-block btn-outline-dark mb-5" href="{% url 'addSuccessStories' %}">+Add Job/Intership Post</a>
+  
+    <div class="card">
+      {% if flag %}
+      <h1 class="card-header">{{post.title}}  <span style="font-size: small;">{{post.datePosted}}</span> <span  style="float: right;"> 
+        <a href="{% url 'updateSuccessStories' post.id %}" class="btn btn-outline-success  btn-sm">Update</a>
+        <a href="{% url 'deleteSuccessStories' post.id %}" class="btn btn-outline-danger btn-sm">Delete</a></span></h1>
+
+      {% else %}
+      
+      <h1 class="card-header">{{post.title}} by {{post.author}}  <span  style="margin-top:20px;float: right;font-size:small">{{post.datePosted}}</span></h1>
+
+      {% endif %}  
+
+        <div class="card-body">
+                   <div class="row">
+          <div class="col-md-6">
+            <blockquote  style="background-color:rgb(238, 238, 238);padding-left: 10px;padding-right: 10px;padding-bottom: 10px;padding-top: 10px; border-radius:5px">
+              <p class="quotation-mark text-dark">
+                “
+              </p>
+              <p class="quote-text text-dark">
+                {{post.qoute}}
+              </p>
+              <hr class="text-dark">
+             
+            </blockquote>
+            <h2>Introduction</h2>
+          <p class="card-text" >{{post.intro|slice:":640"}}</div>
+          <div class="col-md-6">
+          
+         {% if post.image  %}
+
+         <a href="{{post.image.url}}" target="_target">
+         <img src="{{post.image.url}}" height="500" width="500" style="float:right" class="img-fluid">
+        </a>
+
+        {% else %}
+         {% endif %}
+
+      </div style=" margin-left:13px;">  
+      <div style=" margin-left:13px;">
+        <h2 >Description</h2>
+        <p >{{post.intro|slice:"640:"}}</p>
+        </div>
+        <div style=" margin-left:13px;">
+        <p class="card-text" >{{post.description|safe}}
+        </div>
+        </div>
+        
+        
+    </div>
+                  
+        </div>
+      
+   
+        
+      </div>
+    </div>  
+  
+
+
+    <style>
+
+    </style>
+    
+{% endblock content %}
