@@ -11,13 +11,13 @@ class CustomUserAdmin(UserAdmin):
     add_form = UserRegisterForm
     form = UpdateUserForm
     model = User
-    ordering = ('email',)
-    list_display = ( 'email',)
+    ordering = ('username',)
+    list_display = ( 'username',)
     fieldsets = (
-        (None, {'fields': ('email', 'password','is_superuser','is_staff','is_active' )}),
+        (None, {'fields': ('username','email', 'password','is_superuser','is_staff','is_active' )}),
     )
     add_fieldsets = (
-        (None, {'fields': ('email', 'password', 'password2')}),
+        (None, {'fields': ('usename', 'email','password', 'password2')}),
     )
 
 

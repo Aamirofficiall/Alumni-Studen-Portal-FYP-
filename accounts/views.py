@@ -15,15 +15,15 @@ def LoginView(request):
     logout(request)
     email = password = ''
     if request.POST:
-        email = request.POST['email']
+        email = request.POST['username']
         password = request.POST['password']
-        user = authenticate(email=email, password=password)
+        user = authenticate(username=email, password=password)
         if user is not None:
             if user.is_active:
                 login(request, user)
                 return redirect('home')
         else:
-            messages.success(request, 'Email or Password is incorrect')
+            messages.success(request, 'Username or Password is incorrect')
     form=LoginForm()
     return render(request,'login.html',{'form':form})
 

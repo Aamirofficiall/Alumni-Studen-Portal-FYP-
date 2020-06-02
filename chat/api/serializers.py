@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from chat.models import Chat, Contact
+from chat.models import Chat, Contact,Profile
 from chat.views import get_user_contact
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -9,13 +9,42 @@ class ContactSerializer(serializers.StringRelatedField):
     def to_internal_value(self, value):
         return value
 
+class MessageSerializer(serializers.StringRelatedField):
+    def to_internal_value(self, value):
+        return value
 
-class ChatSerializer(serializers.ModelSerializer):
-    participants = ContactSerializer(many=True)
+class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
+        model = User
+        fields = '_all_'
+
+class ProfileSerializer(serializers.ModelSerializer):
+    photo_url = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Profile
+        fields = ( 'user','photo_url')
+
+    def get_photo_url(self, profile):
+        request = self.context.get('request')
+        photo_url = profile.image.url
+        return request.build_absolute_uri(photo_url)
+    
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id','username')
+
+class ChatSerializer(serializers.ModelSerializer):
+    
+    participants = ContactSerializer(many=True)
+    # messages = MessageSerializer(many=True)
+    class Meta:
         model = Chat
-        fields = ('id', 'messages', 'participants','memebers_name')
+        fields = ('id', 'messages', 'participants', 'memebers_name')
+        
+        # fields = ('id', 'messages', 'participants','memebers_name','messages')
         # read_only = ('id')
 
     def create(self, validated_data):
@@ -37,11 +66,3 @@ class ChatSerializer(serializers.ModelSerializer):
 
 
 
-# do in python shell to see how to serialize data
-
-# from chat.models import Chat
-# from chat.api.serializers import ChatSerializer
-# chat = Chat.objects.get(id=1)
-# s = ChatSerializer(instance=chat)
-# s
-# s.data

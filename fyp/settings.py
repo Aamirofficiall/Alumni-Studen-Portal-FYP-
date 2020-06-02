@@ -25,7 +25,7 @@ SECRET_KEY = 'rv2(65k5d+s%05&a@7_dod6w0m$aes=sl#m%&x(k#^5qx+@$qg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'ckeditor',
     'ckeditor_uploader',
     'crispy_forms',
@@ -45,12 +46,29 @@ INSTALLED_APPS = [
     'successStories',
     'techTrend',
     'chatApp',
-    'chat'
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'channels',
+    'rest_auth',
+    'rest_auth.registration',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'chat',
+    
 ]
+SITE_ID = 1
 CKEDITOR_UPLOAD_PATH = "uploads/"
 AUTH_USER_MODEL = 'accounts.User'
-
+ 
 MIDDLEWARE = [
+    # 'django.middleware.security.SecurityMiddleware',
+    # 'django.contrib.sessions.middleware.SessionMiddleware',
+    # 'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # 'django.contrib.messages.middleware.MessageMiddleware',
+    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -79,7 +97,20 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'fyp.wsgi.application'
+ASGI_APPLICATION = "fyp.routing.application"
 
+
+
+
+ 
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -132,7 +163,7 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static')
 ]
 
-STATIC_ROOT=os.path.join(BASE_DIR,'assets')
+# STATIC_ROOT=os.path.join(BASE_DIR,'assets')
 
 
 STATICFILES_DIRS=[
@@ -147,3 +178,27 @@ EMAIL_HOST_USER = 'aamirkhanuk1@gmail.com'
 EMAIL_HOST_PASSWORD = 'Samarkhanuk1.'
 EMAIL_PORT = 587
 PASSWORD_RESET_TIMEOUT_DAYS=1
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.BasicAuthentication',
+    ),
+}
+# CORS_ORIGIN_WHITELIST = (
+#     'http://localhost:8000',
+#     'http://127.0.0.1:8000',
+# )
+
+ACCOUNT_EMAIL_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+LOGIN_REDIRECT_URL = '/'
+
+
+# ACCOUNT_AUTHENTICATION_METHOD = 'email'
+# ACCOUNT_EMAIL_VERIFICATION = 'none'
