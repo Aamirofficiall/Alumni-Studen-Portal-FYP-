@@ -1,9 +1,6 @@
-
-
-
 import axios from "axios";
 import * as actionTypes from "./actionTypes";
-import { base64 } from "base-64";
+
 export const authStart = () => {
   return {
     type: actionTypes.AUTH_START
@@ -26,7 +23,6 @@ export const authFail = error => {
 };
 
 export const logout = () => {
-  window.location.replace('/')
   localStorage.removeItem("token");
   localStorage.removeItem("username");
   localStorage.removeItem("expirationDate");
@@ -48,15 +44,11 @@ export const checkAuthTimeout = expirationTime => {
 export const authLogin = (username, password) => {
   return dispatch => {
     dispatch(authStart());
-
     axios
       .post("http://127.0.0.1:8000/rest-auth/login/", {
         username: username,
-        password: password,
-        // email:'mani@gmail.com'
-     
+        password: password
       })
-
       .then(res => {
         const token = res.data.key;
         const expirationDate = new Date(new Date().getTime() + 3600 * 1000);

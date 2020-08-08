@@ -9,6 +9,7 @@ class LoginForm(forms.Form):
         attrs={
             'type':'text',
             'class':'input100',
+            'id':'login-username'
             
         }
     ))
@@ -16,6 +17,7 @@ class LoginForm(forms.Form):
         attrs={
             'type':'password',
             'class':'input100',
+            'id':'login-password'
         }
     ))
 class UserRegisterForm(UserCreationForm):
@@ -23,6 +25,8 @@ class UserRegisterForm(UserCreationForm):
         attrs={
             'type':'username',
             'class':'input100',
+            'id':'reg-username'
+
             
         }
     ))
@@ -30,6 +34,7 @@ class UserRegisterForm(UserCreationForm):
         attrs={
             'type':'email',
             'class':'input100',
+            'id':'reg-email'
             
         }
     ))
@@ -37,6 +42,7 @@ class UserRegisterForm(UserCreationForm):
         attrs={
             'type':'password',
             'class':'input100',
+            'id':'reg-pass1'
     
         }
     ))
@@ -44,6 +50,8 @@ class UserRegisterForm(UserCreationForm):
         attrs={
             'type':'password',
             'class':'input100',
+            'id':'reg-pass2'
+
         }
     ))
     class Meta:
@@ -55,12 +63,20 @@ class UserRegisterForm(UserCreationForm):
             username = self.cleaned_data['username']
             pass1 = self.cleaned_data['password1']
             pass2 = self.cleaned_data['password2']
+           
+            if ord(username[0]) >= 48 and ord(username[0])<=57: 
+                raise ValidationError("First letter of username must be string")
+
+
             if pass1!=pass2:
+      
                 raise ValidationError("Password did'nt match")
+
             user=User.objects.get(username=username)
             if  user:
                 raise ValidationError('A user with same email exist')
             return username
+
 
 class UpdateUserForm(UserChangeForm):
 

@@ -159,7 +159,7 @@ class Sidepanel extends React.Component {
                 <Spin indicator={antIcon} />
               ) : this.props.isAuthenticated ? (
                   <button onClick={() => {
-                    //  window.location.replace('/');
+                      window.location.replace('/')
                     this.props.logout()
                   }} className="btnTry">
                   <span className='btnTry'>Logout</span>

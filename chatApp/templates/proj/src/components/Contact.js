@@ -154,8 +154,11 @@ export class Contact extends Component {
       };
       axios
         .delete(`http://127.0.0.1:8000/chat/chat/${chatId}/`)
-      .then(res => alert('chat has been removed')).catch(console.log('Delettin failed'));
-      window.location.replace('')
+        .then(res => {
+          window.location.replace('alumani')
+          alert('chat has been removed')
+        }).catch(console.log('Delettin failed'));
+      window.location.replace('alumani')
     };
   
   deleteChat = (e) => {

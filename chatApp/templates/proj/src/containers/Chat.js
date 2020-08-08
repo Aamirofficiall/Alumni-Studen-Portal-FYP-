@@ -195,7 +195,7 @@ class Chat extends React.Component {
 
       <Hoc>
         <Profile id={this.props.match.params.chatID} />
-         {console.log(this.message)}
+         {/* {console.log(this.message)} */}
         <div className="messages">
           <ul id="chat-log">
             {this.props.messages && this.renderMessages(this.props.messages)}

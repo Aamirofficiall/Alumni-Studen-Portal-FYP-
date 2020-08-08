@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+ 
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'corsheaders',
     'ckeditor',
     'ckeditor_uploader',
     'crispy_forms',
@@ -55,20 +56,21 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'chat',
-    
-]
+    'chatBot',  
+    'profileDashboard',
+    'searchAlumni',
+    'disscussionForum' 
+]  
+           
+                                                  
+  
 SITE_ID = 1
 CKEDITOR_UPLOAD_PATH = "uploads/"
 AUTH_USER_MODEL = 'accounts.User'
  
+   
 MIDDLEWARE = [
-    # 'django.middleware.security.SecurityMiddleware',
-    # 'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
-    # 'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # 'django.contrib.messages.middleware.MessageMiddleware',
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -155,29 +157,17 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+ 
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,'static')
-]
-
-# STATIC_ROOT=os.path.join(BASE_DIR,'assets')
 
 
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static')
 ]
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
-MEDIA_URL='/media/'
-
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'aamirkhanuk1@gmail.com'
-EMAIL_HOST_PASSWORD = 'Samarkhanuk1.'
-EMAIL_PORT = 587
-PASSWORD_RESET_TIMEOUT_DAYS=1
+MEDIA_URL = '/media/'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
@@ -185,14 +175,18 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
-        # 'rest_framework.authentication.BasicAuthentication',
-    ),
+    
+    ), 
 }
-# CORS_ORIGIN_WHITELIST = (
-#     'http://localhost:8000',
-#     'http://127.0.0.1:8000',
-# )
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+    'http://localhost:1234',
+    'http://127.0.0.1:8000',
+    'http://localhost:5000',
+    'http://192.168.42.69:5000'
+)
+
 
 ACCOUNT_EMAIL_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
@@ -200,5 +194,9 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 LOGIN_REDIRECT_URL = '/'
 
 
-# ACCOUNT_AUTHENTICATION_METHOD = 'email'
-# ACCOUNT_EMAIL_VERIFICATION = 'none'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'aamirkhanuk1@gmail.com'
+EMAIL_HOST_PASSWORD = 'Samarkhanuk1.'
+EMAIL_PORT = 587   
+PASSWORD_RESET_TIMEOUT_DAYS=1 

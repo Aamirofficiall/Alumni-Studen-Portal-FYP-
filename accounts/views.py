@@ -5,10 +5,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import  PasswordChangeForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import update_session_auth_hash
+from django.forms import ValidationError
 from .forms import UpdateUserForm
 from django.template import RequestContext
 from .forms import LoginForm
 from django.contrib import messages
+from  career.models import CareerPost
+from  successStories.models import SuccessStories
+from techTrend.models import TechTrend
+from profileDashboard import *
 
 
 def LoginView(request):
@@ -31,16 +36,29 @@ def LoginView(request):
 
 @login_required(login_url='login')
 def home(request):
-    return render(request,'home.html')
+    tech=TechTrend.objects.all()[:3]
+    stories=SuccessStories.objects.all()[:3]
+    career=CareerPost.objects.all()[:3]
+
+    context={
+        'tech':tech,
+        'stories':stories,
+        'career':career
+        }
+    return render(request,'home.html',context)
+
 
 
 def register(request):
     if request.method=='POST':
         form =UserRegisterForm(request.POST)
+        username=request.POST.get('username')
         if form.is_valid():
             user=form.save()
             # profile=Profile.objects.create(user=user)
             # profile.save()
+            
+            
             username=form.cleaned_data.get('email')
             messages.success(request,'Account has been created for u '+str(username))
             return redirect('login')
@@ -48,6 +66,8 @@ def register(request):
     else:
         form=UserRegisterForm()
     return render(request,'register.html',{'form':form})
+
+
 
 
 @login_required(login_url='login')

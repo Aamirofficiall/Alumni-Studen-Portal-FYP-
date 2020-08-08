@@ -56,7 +56,7 @@ class HorizontalAddChatForm extends React.Component {
             this.props.getUserChats(this.props.username, this.props.token);
           })
           .catch(err => {
-            console.error(err);
+            // console.error(err);
             this.setState({
               error: "username doesn't exist.....! "
             });

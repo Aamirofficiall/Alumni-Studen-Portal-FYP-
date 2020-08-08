@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
-from chat.models import Chat, Contact,Profile
+from chat.models import Chat, Contact
+from profileDashboard.models import *
 from chat.views import get_user_contact
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -22,13 +23,13 @@ class UserSerializer(serializers.ModelSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
     photo_url = serializers.SerializerMethodField()
 
-    class Meta:
+    class Meta: 
         model = Profile
         fields = ( 'user','photo_url')
 
     def get_photo_url(self, profile):
         request = self.context.get('request')
-        photo_url = profile.image.url
+        photo_url = profile.profilePic.url
         return request.build_absolute_uri(photo_url)
     
 class UserSerializer(serializers.ModelSerializer):

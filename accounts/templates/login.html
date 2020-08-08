@@ -90,7 +90,7 @@
 					{% if messages %}
   <ul class="messages">
     {% for message in messages %}
-      <p class="alert alert-danger pr-5" style="width: 400px;">{{message}}</p>
+      <p class="alert alert-{{message.tags}} pr-5" style="width: 400px;">{{message}}</p>
     {% endfor %}
   </ul>
 {% endif %}

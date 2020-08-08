@@ -13,6 +13,19 @@ class SuccessStories(models.Model):
     description=RichTextUploadingField(null=True)
     image=models.ImageField(null=True,upload_to='SuccessStories')
     qoute=models.TextField()
-    datePosted=models.DateField(auto_now_add=True)
+    datePosted = models.DateField(auto_now_add=True)
+    
+ 
     def __str__(self):
         return self.title
+
+class Comment(models.Model):
+    post = models.ForeignKey(SuccessStories, on_delete=models.CASCADE,related_name='post')
+    user = models.ForeignKey(User, related_name='userComment', on_delete=models.CASCADE)
+    content = models.TextField()
+    date = models.DateTimeField(auto_now_add=True, editable=True)
+
+    class Meta:
+        ordering = ['-date']
+    def __str__(self):
+        return self.content

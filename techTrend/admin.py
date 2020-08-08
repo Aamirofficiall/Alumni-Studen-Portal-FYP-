@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import TechTrend,Comment
 
-# Register your models here.
+admin.site.register(TechTrend)
+admin.site.register(Comment)

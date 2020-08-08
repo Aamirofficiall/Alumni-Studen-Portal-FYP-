@@ -7,5 +7,9 @@ urlpatterns = [
     path('<int:id>/',TechTrendDisplayDetail,name='TechTrendDisplayDetail'),
     path('add/',AddTechTrend,name='addTechTrend'),
     path('update/<int:id>/',UpdateTechTrend,name='updateTechTrend'),
-    path('delete/<int:id>/',DeleteTechTrend,name='deleteTechTrend'),
+    path('delete/<int:id>/', DeleteTechTrend, name='deleteTechTrend'),
+    path('addComments/', addComments, name='addComments_TechTrend'), 
+    path('deleteComments/<int:pk>/<int:id>/', deleteComments, name='deleteCommentsTechTrend'),    
+    
+    
 ]

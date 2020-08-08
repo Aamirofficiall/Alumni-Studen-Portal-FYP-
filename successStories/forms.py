@@ -14,6 +14,7 @@ class SuccessStoriesForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['title'].widget.attrs['class'] = 'form-control '
+        self.fields['title'].widget.attrs['id'] = 'title-SS'   
         self.fields['description'].widget.attrs['class'] = 'form-control'
         self.fields['intro'].widget.attrs['class'] = 'form-control'
         self.fields['qoute'].widget.attrs['class'] = 'form-control'

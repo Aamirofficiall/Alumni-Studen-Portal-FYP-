@@ -3,8 +3,8 @@ from django.contrib import admin
 from django.urls import path,include,re_path
 from django.conf import settings
 from django.conf.urls.static import static
-
-urlpatterns = [
+from chatApp.views import index
+urlpatterns = [ 
     path('',include('accounts.url')),
     path('admin/', admin.site.urls),
     path('ckeditor', include('ckeditor_uploader.urls')),
@@ -15,8 +15,11 @@ urlpatterns = [
     path('chat/', include('chat.api.urls', namespace='chat')),
     path('rest-auth/', include('rest_auth.urls')),
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
-    path('alumni/', include('chatApp.url'))
-
+    path('alumani/', include('chatApp.url')),
+    path('bot/', include('chatBot.url')),
+    path('dashboard/',include('profileDashboard.url')),
+    path('search/',include('searchAlumni.url')),
+    path('forum/',include('disscussionForum.url')),
 
 ]
 

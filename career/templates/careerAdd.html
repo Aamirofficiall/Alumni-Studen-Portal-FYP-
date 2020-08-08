@@ -19,7 +19,7 @@
                                         {% endif %}
                                             
                                     <hr>
-                                        <form method="POST" enctype="multipart/form-data">
+                                        <form method="POST" enctype="multipart/form-data" id='careerForm'>
                                             {% csrf_token %}
 
 
@@ -27,7 +27,8 @@
                                             <div class="mt-3 mb-3">{{fields.label}}</div> 
                                                  
                                             {{fields}}
-                                             {% if fields.errors %}
+                                            
+                                            {% if fields.errors %}
                                              <li style="list-style-type: none;" class="mt-2 mb-2 alert alert-danger">{{fields.errors}}</li>
                                              {% endif %}
                                              

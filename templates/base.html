@@ -9,8 +9,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+    <link rel="stylesheet" href="{% static 'css/mainDissForum.css' %}">
     <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
     <!--===============================================================================================-->
@@ -28,7 +28,7 @@
     <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+        
     <title>Home</title>
   </head>
   <style>
@@ -90,7 +90,7 @@
    text-decoration: none;
 }
 
-.ul2 li a:hover{
+.a1:hover{
   background-color: black;
   color: white;
   font-size: 18px;
@@ -127,7 +127,260 @@
 
   }
   
+  
+    #mySidenav a {
+      position: fixed;
+      left: -60px;
+      transition: 0.3s;
+      padding: 15px;
+      width: 100px;
+      text-decoration: none;
+      font-size: 15px;
+      color: white;
+      border-radius: 0 5px 5px 0;
+      border:1px white solid;
+      border-radius: 25px;
+    }
     
+    #mySidenav a:hover {
+      left: 0;
+    }
+    
+    
+    
+    #contact {
+      top: 200px;
+      background-color: rgb(0, 0, 0);
+    }
+
+    body{
+      background:rgb(255, 255, 255);    
+  }
+  .chat-list {
+      padding: 0;
+      font-size: 1rem;
+  }
+  
+  .chat-list li {
+      margin-bottom: 10px;
+      overflow: auto;
+      color: #ffffff;
+  }
+  
+  .chat-list .chat-img {
+      float: left;
+      width: 48px;
+  }
+  
+  .chat-list .chat-img img {
+      -webkit-border-radius: 50px;
+      -moz-border-radius: 50px;
+      border-radius: 50px;
+      width: 100%;
+  }
+  
+  .chat-list .chat-message {
+      -webkit-border-radius: 50px;
+      -moz-border-radius: 50px;
+      border-radius: 50px;
+      background: #4fdcff;
+      display: inline-block;
+      padding: 10px 20px;
+      position: relative;
+  }
+  
+  .chat-list .chat-message:before {
+      content: "";
+      position: absolute;
+      top: 15px;
+      width: 0;
+      height: 0;
+  }
+  
+  .chat-list .chat-message h5 {
+      margin: 0 0 5px 0;
+      font-weight: 600;
+      line-height: 100%;
+      font-size: 1.5rem;
+  }
+  
+  .chat-list .chat-message p {
+      line-height: 18px;
+      margin: 0;
+      padding: 0;
+  }
+  
+  .chat-list .chat-body {
+      margin-left: 20px;
+      float: left;
+      width: 70%;
+  }
+  
+  .chat-list .in .chat-message:before {
+      left: -12px;
+      border-bottom: 20px solid transparent;
+      border-right: 20px solid #4fdcff;
+  }
+  
+  .chat-list .out .chat-img {
+      float: right;
+  }
+  
+  .chat-list .out .chat-body {
+      float: right;
+      margin-right: 20px;
+      text-align: right;
+  }
+  
+  .chat-list .out .chat-message {
+      background: #474747;
+  }
+  
+  .chat-list .out .chat-message:before {
+      right: -12px;
+      border-bottom: 20px solid transparent;
+      border-left: 20px solid #474747;
+  }
+  
+  .card .card-header:first-child {
+      -webkit-border-radius: 0.3rem 0.3rem 0 0;
+      -moz-border-radius: 0.3rem 0.3rem 0 0;
+      border-radius: 0.3rem 0.3rem 0 0;
+  }
+   #card-header {
+      background: #17202b;
+      border: 0;
+      font-size: 1rem;
+      padding: .65rem 1rem;
+      position: relative;
+      font-weight: 900;
+      color: #ffffff;
+  }
+  
+  .content{
+      margin-top:40px;    
+  }
+  .btx{
+      color: black;
+      background-color: white;
+      border: 1px solid black ;
+  }
+  .btx:hover{
+      color: white;
+      background-color: black;
+      border: 1px solid black ;
+  }
+  .form-btx {
+      /* This bit sets up the horizontal layout */
+      display:flex;
+      flex-direction:row;
+      
+      /* This bit draws the box around it */
+   
+      /* I've used padding so you can see the edges of the elements. */
+      padding:2px;
+    }
+    
+    input {
+      /* Tell the input to use all the available space */
+      flex-grow:2;
+      /* And hide the input's outline, so the form looks like the outline */
+      border:none;
+    }
+    
+    input:focus {
+      /* removing the input focus blue box. Put this on the form if you like. */
+      outline: none;
+    }
+    
+    button {
+      /* Just a little styling to make it pretty */
+      border:1px solid blue;
+      background:blue;
+      color:white;
+    }
+
+    .btx-input{
+        border-left: 1px solid black;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        border-radius: 25px;
+    }
+    @media (min-width: 576px) {
+      .modal-dialog { max-width: none; }
+    }
+    
+    .modal-dialog {
+      width: 92%;
+      height: 92%;
+      padding: 0;
+    }
+    
+    .modal-content {
+      height: 90%;
+    }
+    .btx-close{
+      color: rgb(202, 202, 202)
+
+    }
+    .btx-close:hover{
+      color: white;
+
+  }
+  u {    
+    border-bottom: 1px dotted #000;
+    text-decoration: none;
+} 
+
+.dashboardText:hover{
+  
+  color: #000;  
+
+}
+.bg-custom-1 {
+  background-color: #85144b;
+}
+
+.bg-custom-2 {
+background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+}
+
+.dropDownDashboard:hover{
+  color: white;
+  background-color: black;
+}
+.btp{
+  border: 1 solid black;
+  border-radius: 5px;
+  
+  color: black;
+  background-color: white;
+}
+.btp:hover{
+  color: white;
+  background-color: black;
+}
+
+.content-mobile{
+  display: none;
+}
+.dashboard-link{
+  color: black;
+  background-color: white;
+}
+
+.dashboard-link:hover{
+  color: black;
+  background-color: white;
+}
+.dashboardDown:hover{
+  color: white;
+  background-color: black;
+  padding: 5px;
+  border-radius:5px;
+
+  
+}
 </style>
   <body>
 
@@ -173,50 +426,159 @@
 <!--=========================================================================================-->
 
         <!--Actual Navbar-->
-        <nav class="navbar shadow p-3 mb-5 bg-white rounded navbar-expand-lg sticky-top  navbar-light " style="background-color: white;">
-         
-          <a class="navbar-brand" href="{% url 'home' %}">
-            <img src="{% static 'images/icons/logo4.png' %}"width="100" height="80" alt="">
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse " id="navbarText">
-            <ul class="ul2 navbar-nav mr-auto col-md-12 col-sm-12 col-lg-12 text-center  ">
-              
-              
-              {% if user.is_authenticated %}
-                
-              <li class="li2 "><a  href="{% url 'home' %}">Home</a></li>
-              <li class="li2 "><a  href="{% url 'careerDisplay' %}">Career</a></li>
-              <li class="li2 "><a  href="{% url 'SuccessStoriesDisplay' %}">Success Stories</a></li>
-              <li class="li2 "><a  href="{% url 'TechTrendDisplay' %}">Tech Trend</a></li>
-              <li class="li2 "><a  href="{% url 'messanger' %}">Messanger</a></li>
-              <li class="li2 "><a  href="">Search Alumani</a></li>
-              <li class="li2 "><a  href="">Gallery</a></li>
-              <li class="li2 "><a  href="">Events</a></li>
-              <li class="li2 "><a  href="">News</a></li>
-              <li class="li2 "><a  href="/contact">Contact</a></li>
-              <li class="li2 "><a  href="/about">About Us</a></li>
-              {% else %}
-              <li class="li2 "><a  href="{% url 'home' %}">home</a></li>
-              <li class="li2 "><a  href="/contact">Contact</a></li>
-              <li class="li3 "><a  href="/about">About Us</a></li>
-
-              {% endif %}
-
-            </ul>
-            
-            <span class="navbar-text">
-              
-            </span>
-          </div>
-        </nav>
+        <nav class="navbar  shadow p-3 mb-5 bg-white rounded navbar-expand-lg sticky-top  navbar-light " style="background-color: white;">
+            <div class="container">
+             <a class="navbar-brand" href="{% url 'home' %}">
+               <img src="{% static 'images/icons/logo4.png' %}"width="100" height="80" alt="">
+             </a>
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+             </button>
+             <div class="collapse navbar-collapse " id="navbarText">
+               <ul class="ul2 navbar-nav mr-auto col-md-10 col-sm-10 col-lg-10 text-center  ">
+                 
+                 
+                 {% if user.is_authenticated %}
+                   
+                 <li class="li2 "><a class='a1' href="{% url 'home' %}">Home</a></li>
+                 <li class="li2 "><a class='a1' href="{% url 'careerDisplay' %}">Career</a></li>
+                 <li class="li2 "><a class='a1' href="{% url 'SuccessStoriesDisplay' %}">Success Stories</a></li>
+                 <li class="li2 "><a class='a1' href="{% url 'TechTrendDisplay' %}">Tech Trend</a></li>
+                 <li class="li2 "><a  target="_blank"class='a1' href="http://localhost:3000">Messanger</a></li>
+                 <li class="li2 "><a class='a1' href="{% url 'search' %}">Search Alumani</a></li>
+                 <li class="li2 "><a class='a1' href="{% url 'dissForumHome' %}">D-Forum</a></li>
+                 
+                 <li class="li2 "><a class='a1' href="/contact">Contact</a></li>
+                 <!-- <div>
+                   <figure class="figure ml-5 ">
+                     <div class="text-justify-center">
+                     <img  src="https://bootdey.com/img/Content/user_1.jpg"  alt="no image found" class="  figure-img img-fluid rounded-circle " width="50" height="50">
+                     <figcaption class="figure-caption dashboardText text-justify-center ml-1">Profile </figcaption>
+                   </div>
+                   </figure>
+                 
+                 </div> -->
+                 
+                 {% else %}
+                 <li class="li2 "><a class='a1' href="{% url 'home' %}">Home</a></li>
+                 <li class="li2 "><a class='a1' href="/contact">Contact</a></li>
+                 <li class="li3 "><a class='a1' href="/about">About Us</a></li>
+   
+                 {% endif %}
+   
+               </ul>
+               
+               {% if user.is_authenticated %}
+                 
+                 
+               <ul class=" navbar-nav  col-md-2  content-mobile " style=" justify-content: center;display:flex;">
+                 <li class="nav-item dropdown text-center  ">
+   
+                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   
+                   {% if  user.profile.profilePic == None %}
+                     
+                   <img src="{{user.profile.profilePic.url}}" width="50" height="50" class="rounded-circle border border-dark p-1">
+   
+                   {% else %}
+                   <img src="{% static 'images/user-logo.jpg' %}" width="50" height="50" class="rounded-circle border  ">
+   
+                   {% endif %}
+   
+                 </a>
+                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                   <a class="dropdown-item dropDownDashboard" href="{% url 'dashboard' %}">Dashboard</a>
+                   <a class="dropdown-item dropDownDashboard" href="{% url 'logout' %}">Log Out</a>
+                 </div>
+               </li>   
+             </ul>
+               
+             {% endif %}
+             
+             <span class="navbar-text">
+                 
+               </span>
+             </div>
+           </div>
+           </nav>
       
+        
     {% block content %}
       
     {% endblock content %}
   
+
+        <!--=========================Carrerr Comment section=======================-->
+
+        
+
+ 
+
+      <!--=============================Above Footer===============================-->
+      
+     
+        <div id="mySidenav" class="sidenav">
+           <a href="#" id="contact" data-toggle="modal" data-target="#myModal">&nbsp; Chat-Bot</a>
+        </div>
+
+        <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog" >
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+    
+              <div class="modal-body"  >
+                <div class=" ">
+                    <div class="row " >
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                            <div class="card" >
+                                <div id="card-header" class="card-header">AI CHAT-BOT <span class="float-right"><button type="button" class="close btx-close" data-dismiss="modal"  >&times;</button></span></div>
+    
+                                <div class="card-body overflow-auto  height3  "  >
+                                    <div id="messages">
+                                    <ul class="chat-list " id='chat'  style="height: 300px; "  >
+                                     
+                                        
+                                        <li class="out">
+                                            <div class="chat-img">
+                                                <img alt="Avtar" src="{%  static 'images/botImage.jpg' %}">
+        
+                                            </div>
+                                            <div class="chat-body">
+                                                <div class="chat-message first">
+                                                    <h5>BOT</h5>
+                                                    <p>Wellcome ,We are here to serve you</p>
+                                                </div>
+                                            </div>
+                                        </li>
+    
+                                    </ul>   
+                                </div>
+        
+                                   
+                                </div>
+    
+                                <div class="form-btx" >
+                                    <input id="message" placeholder="Ask any Question here....!"  class="border p-2 rounded-top" />
+                                    <button id="submit" class="btx rounded-right pl-3 pr-3" >send <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div> 
+                
+              </div>
+              <div style="margin-top: 0px;" class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+        
+          </div>
+        </div>
+    
+
+
 
 
     <!--========================================================================================-->
@@ -342,10 +704,334 @@
 
   
     <!--bootstrap jquery files-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <!-- <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script> -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+
+  <script>
+    
+    $( "#careerForm" ).submit(function( event ) {
+      
+      var title=$('#title-career').val();
+      var letters = /^[A-Z a-z ]+$/;
+      if(!title.match(letters))
+      { 
+          event.preventDefault();
+          var htmlData=`<p class="alert mt-3  alert-danger rm-career ">Title can only contain Alphabets!<p>`
+          $("#title-career").after(htmlData);
+          $("#title-career").addClass("form-control border border-danger");
+
+          setTimeout(function(){
+						$('.rm-career').remove();
+            }, 20000);
+          
+      }
+
+    });
+    $( "#techForm" ).submit(function( event ) {
+      
+      var title=$('#title-tech').val();
+      var letters = /^[A-Z a-z ]+$/;
+      if(!title.match(letters))
+      { 
+          event.preventDefault();
+          var htmlData=`<p class="alert mt-3  alert-danger rm-tech ">Title can only contain Alphabets!<p>`
+          $("#title-tech").after(htmlData);
+          $("#title-tech").addClass("form-control border border-danger");
+
+          setTimeout(function(){
+						$('.rm-tech').remove();
+            }, 20000);
+          
+      }
+
+    });
+    $( "#SSForm" ).submit(function( event ) {
+      
+      var title=$('#title-SS').val();
+      event.preventDefault();
+      var letters = /^[A-Z a-z ]+$/;
+      if(!title.match(letters))
+      { 
+          
+          var htmlData=`<p class="alert mt-3  alert-danger rm-SS ">Title can only contain Alphabets!<p>`
+          $("#title-SS").after(htmlData);
+          $("#title-SS").addClass("form-control border border-danger");
+
+          setTimeout(function(){
+						$('.rm-SS').remove();
+            }, 20000);
+          
+      }
+
+    });
+    
+    var timeSince = function(date) {
+      if (typeof date !== 'object') {
+        date = new Date(date);
+      }
+    
+      var seconds = Math.floor((new Date() - date) / 1000);
+      var intervalType;
+    
+      var interval = Math.floor(seconds / 31536000);
+      if (interval >= 1) {
+        intervalType = 'year';
+      } else {
+        interval = Math.floor(seconds / 2592000);
+        if (interval >= 1) {
+          intervalType = 'month';
+        } else {
+          interval = Math.floor(seconds / 86400);
+          if (interval >= 1) {
+            intervalType = 'day';
+          } else {
+            interval = Math.floor(seconds / 3600);
+            if (interval >= 1) {
+              intervalType = "hour";
+            } else {
+              interval = Math.floor(seconds / 60);
+              if (interval >= 1) {
+                intervalType = "minute";
+              } else {
+                interval = seconds;
+                intervalType = "second";
+              }
+            }
+          }
+        }
+      }
+    
+      if (interval > 1 || interval === 0) {
+        intervalType += 's';
+      }
+    
+      return interval + ' ' + intervalType;
+    };
+
+
+    $('#AddComment').click(function(e){
+
+        e.preventDefault()
+
+        
+        var comment=$('#comment').val()
+        $('#comment').val("");
+        $.ajax({
+            url:'{% url "addComments" %}',
+            type:'POST',
+           
+            data:{
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                comment:comment,
+                post: '{{post.id}}'
+            }
+        })
+        .done(function(response){
+            
+          var ul = document.getElementById('NoneComment');
+          var count=document.getElementById('commentsCountTechTrend')
+          var countcomm=parseInt(count.innerText)+1
+          count.innerText= countcomm
+
+          if (ul!==null)
+            {
+              ul.innerText=''
+            }
+            window.location.reload();       
+
+                
+        })
+        .fail(function(){console.log('message sending fail')})
+    })
+
+    $('#AddCommentSuccessStories').click(function(e){
+
+      e.preventDefault()
+
+      
+      var comment=$('#commentSuccessStories').val()
+      $('#commentSuccessStories').val("");
+      $.ajax({
+          url:'{% url "addComments_SuccessStories" %}',
+          type:'POST',
+         
+          data:{
+              csrfmiddlewaretoken: '{{ csrf_token }}',
+              comment:comment,
+              post: '{{post.id}}'
+          }
+      })
+      .done(function(response){
+
+        var ul = document.getElementById('NoneCommentSuccessStories');
+        var count=document.getElementById('commentsCountSuccessStories')
+        var countcomm=parseInt(count.innerText)+1
+        count.innerText= countcomm
+
+      
+        if (ul!==null)
+          {
+            ul.innerText=''
+          }
+          window.location.reload();
+              
+      })
+      .fail(function(){console.log('message sending fail')})
+  })
+
+
+  $('#AddCommentTechTrend').click(function(e){
+
+    e.preventDefault()
+
+    
+    var comment=$('#commentTechTrend').val()
+    $('#commentTechTrend').val("");
+    $.ajax({
+        url:'{% url "addComments_TechTrend" %}',
+        type:'POST',
+       
+        data:{
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            comment:comment,
+            post: '{{post.id}}'
+        }
+    })
+    .done(function(response){
+
+      var ul = document.getElementById('NoneCommentTechTrend');
+      var count=document.getElementById('commentsCount')
+      var countcomm=parseInt(count.innerText)+1
+      count.innerText= countcomm
+      if (ul!==null)
+        {
+          ul.innerText=''
+        }
+    
+        window.location.reload();       
+            
+    })
+    .fail(function(){console.log('message sending fail')})
+})
+
+
+
+
+
+
+$('#AddSuggestion').click(function(e){
+
+  e.preventDefault()
+
+  
+  var comment=$('#suggestion').val()
+  $('#suggestion').val("");
+  $.ajax({
+      url:'{% url "addCommentsDissForum" %}',
+      type:'POST',
+     
+      data:{
+          csrfmiddlewaretoken: '{{ csrf_token }}',
+          comment:comment,
+          post: '{{data.id}}'
+      }
+  })
+  .done(function(response){
+
+    var ul = document.getElementById('NoneCommentDissFourm');
+    var count=document.getElementById('commentsCountDissFourm')
+    var countcomm=parseInt(count.innerText)+1
+    count.innerText= countcomm
+    if (ul!==null)
+      {
+        ul.innerText=''
+      }
+      window.location.reload();
+//      $("#demoDissForum").prepend(html_data);
+     
+          
+  })
+  .fail(function(){console.log('message sending fail')})
+})
+
+
+
+</script>
+
+
+      <script>
+        $("#demoDissForum li").click(function(e) {     
+                      });
+          $('#submit').click(function(){
+              var text=$('#message').val()
+              var html_data_user=`<li class="in">
+                  <div class="chat-img">
+                      <img alt="Avtar" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+      
+                  </div>
+                  <div class="chat-body">
+                      <div class="chat-message">
+                          <h5>You</h5>
+      
+                          <p>${text}</p>
+                      </div>
+                  </div>
+              </li> `
+              $('#chat').append(html_data_user)
+      
+              $.ajax({
+                  url:'{% url "insert" %}',
+                  type:'POST',
+                  data:{text:text}
+              })
+              .done(function(response){
+                  console.log(response)
+              var text=response['text']
+              var html_data_user=` <li class="out">
+                  <div class="chat-img">
+                   <img alt="Avtar" src="{%  static 'images/botImage.jpg' %}" >
+      
+                  </div>
+                  <div class="chat-body">
+                      <div class="chat-message">
+                          <h5>BOT</h5>
+      
+                          <p>${text}</p>
+                      </div>
+                  </div>
+              </li>
+              
+              `
+              $('#chat').append(html_data_user)
+              })
+              .fail(function(){console.log('message sending fail')})
+          })
+      
+      
+      
+      
+      
+        
+          
+      
+      </script>    
+        
+
+
+   
   </body>
 </html>

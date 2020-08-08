@@ -1,16 +1,19 @@
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import get_user_model
 from django.shortcuts import render,redirect,HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import get_user_model
+from django.http import JsonResponse
 from django.contrib import messages
 from django.http import Http404
+from itertools import chain
 from PIL import Image
 from .models import *
 from .forms import *
-User=get_user_model()
-from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+User = get_user_model()
+from profileDashboard.models import *
+from django.core.paginator import Paginator
 
 def is_owner(func):
     def check_and_call(request, *args, **kwargs):
@@ -33,10 +36,30 @@ def is_owner(func):
 @login_required(login_url='login')
 def TechTrendDisplay(request):
     
-    post=TechTrend.objects.all()
+    dep = UserDegree.objects.filter(user=request.user)
+    ab=[]
+    for i in dep:
+        ab.append(UserDegree.objects.filter(degree__department=i.degree.department))
+    list_ids = []
+    for i in ab:
+        for j in i:
+            list_ids.append(j.user.id)
 
+    all_users_with_same_department = User.objects.filter(pk__in=list_ids)
+    TechTrendPost = TechTrend.objects.filter(author__id__in=all_users_with_same_department.values_list('id', flat=True))
+    TechTrendPostCount = TechTrend.objects.filter(author__id__in=all_users_with_same_department.values_list('id', flat=True)).count()
+    TechTrendPostCountFlag = True if TechTrendPostCount > 0 else False
+    userUserDegree = UserDegree.objects.filter(user=request.user).count()
+    userUserDegreeCFlage = True if userUserDegree > 0 else False
+    paginator = Paginator(TechTrendPost, 3) 
+    page = request.GET.get('page')
+    TechTrendPost = paginator.get_page(page)
     context={
-        'posts':post,
+
+        'posts': TechTrendPost,
+        'TechTrendPostCountFlag': TechTrendPostCountFlag,
+        'userUserDegreeCFlage': userUserDegreeCFlage
+
     }
     return render(request,'TechTrend.html',context)
 
@@ -48,12 +71,14 @@ def TechTrendDisplayDetail(request,id):
     if request.user==post.author:
         flag=True
  
-    context={
-        'post':post,
-        'flag':flag,
-    }
+    post = TechTrend.objects.get(pk=id)
+    comments=Comment.objects.filter(post=post)
     
-
+    context={
+        'post': post,
+        'flag': flag,
+        'comments':comments    
+    }
     return render(request,'TechTrendDetail.html',context,)
 
 
@@ -110,4 +135,43 @@ def DeleteTechTrend(request, id):
     tech.delete()  
     messages.success(request,"Data Delete Successfully")
 
-    return redirect("TechTrendDisplay")  
+    return redirect("TechTrendDisplay")
+    
+
+
+def to_dict(instance):
+    opts = instance._meta
+    data = {}
+    for f in chain(opts.concrete_fields, opts.private_fields):
+        data[f.name] = f.value_from_object(instance)
+    for f in opts.many_to_many:
+        data[f.name] = [i.id for i in f.value_from_object(instance)]
+    return data
+
+
+@csrf_exempt
+def addComments(request):
+    if request.method=="POST":
+        comment = request.POST.get('comment')
+        post = request.POST.get('post')
+        post=TechTrend.objects.get(id=post)
+        c = Comment.objects.create(content=comment, user=request.user, post=post)
+        data = to_dict(c)
+        username = User.objects.get(pk=data['user']).username
+        data['username']=username
+        return JsonResponse(data,safe=False)
+
+
+
+def deleteComments(request, pk, id):
+    try:
+        comment = Comment.objects.get(pk=pk)
+    except:
+        return redirect(TechTrend, pk=id)
+        
+    comment = Comment.objects.get(pk=pk)
+    comment.delete()
+    messages.success(request,"Comment has been deleted Succussfully")
+    return redirect(TechTrendDisplayDetail, id=id)
+    
+
