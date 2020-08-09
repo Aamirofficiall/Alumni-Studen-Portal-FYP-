@@ -14,7 +14,7 @@ class Profile(models.Model):
     lastName=models.CharField(max_length=30)
     contact = models.CharField(max_length=30)
     alumniType = models.CharField(max_length=30, choices=POST_TYPE_CHOICES)
-    profilePic = models.ImageField(null=True, upload_to='Profile (User)',default="images/user-logo.jpg") 
+    profilePic = models.ImageField(null=True, upload_to='Profile (User)',default="Profile (User)/user-logo.jpg") 
     
     intro = models.TextField()
     user=models.OneToOneField(User,on_delete=models.CASCADE)

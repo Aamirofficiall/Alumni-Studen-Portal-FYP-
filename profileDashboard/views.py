@@ -78,6 +78,7 @@ def updateProfile(request):
             userForm=form.save(commit=False)
             userForm.user=request.user
             userForm.save()
+            return redirect('dashboard')
 
     profile = Profile.objects.get(user=request.user)
     profileCount = Profile.objects.get(user=request.user)
